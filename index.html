@@ -3,23 +3,411 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pizzaria Sabor D'Italia — Guarapuava</title>
-<meta http-equiv="refresh" content="0;url=https://app.cardapioweb.com/pizzariasabor_ditalia">
+<title>Pizzaria Sabor D'Italia — Guarapuava | Mais de 70 sabores, duas massas</title>
+<meta name="description" content="Pizzaria em Guarapuava desde 2015: mais de 70 sabores, duas massas (italiana 00 de fermentação longa e tradicional fresca), rodízio de quarta a sábado e delivery pelo cardápio próprio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&family=Nunito:ital,wght@0,400;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pizzaria Sabor D'Italia",
+  "url": "https://www.pizzariasabordeitalia.com.br/",
+  "menu": "https://pedidos.pizzariasabordeitalia.com.br",
+  "servesCuisine": ["Pizza", "Italiana"],
+  "telephone": "+554236230707",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Azevedo Portugal, 1599",
+    "addressLocality": "Guarapuava",
+    "addressRegion": "PR",
+    "postalCode": "85010-200",
+    "addressCountry": "BR"
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"18:00","closes":"23:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Monday","opens":"18:00","closes":"23:00"}
+  ],
+  "sameAs": [
+    "https://www.instagram.com/pizzariasaborditalia/",
+    "https://www.facebook.com/pizzaSaborDitalia"
+  ]
+}
+</script>
 <style>
-  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;
-       background:#191410;color:#f3e9d7;font-family:Georgia,'Times New Roman',serif;text-align:center}
-  main{padding:2rem}
-  h1{font-weight:normal;font-style:italic;letter-spacing:.03em;margin:0 0 .5rem;color:#e7c873}
-  p{margin:.4rem 0;font-size:1.05rem}
-  a{color:#e7c873}
+  :root{
+    --verde:#3D9B35; --verde-escuro:#2E7A28; --vermelho:#CC1F1F; --vermelho-escuro:#A81717;
+    --madeira:#8B5E3C; --amarelo:#F5C842; --branco:#FFFFFF;
+    --massa:#FBF6EC; --tinta:#2A241D; --cinza:#6E655B;
+    --max:1100px; --raio:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Nunito',system-ui,sans-serif;color:var(--tinta);background:var(--branco);line-height:1.6}
+  img{max-width:100%;display:block}
+  a{color:var(--verde-escuro)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+  .display{font-family:'Lobster Two',cursive;font-weight:700;line-height:1.08}
+  .eyebrow{font-weight:800;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--verde)}
+  .eyebrow::before{content:"";display:inline-block;width:22px;height:3px;background:var(--amarelo);border-radius:2px;margin-right:.5rem;vertical-align:middle}
+  .btn{display:inline-block;font-weight:800;text-decoration:none;border-radius:999px;padding:.9rem 1.7rem;transition:transform .15s ease,box-shadow .15s ease}
+  .btn:focus-visible{outline:3px solid var(--amarelo);outline-offset:2px}
+  .btn-pedir{background:var(--vermelho);color:#fff;box-shadow:0 6px 18px rgba(204,31,31,.28)}
+  .btn-pedir:hover{background:var(--vermelho-escuro);transform:translateY(-2px)}
+  .btn-ghost{border:2px solid var(--verde);color:var(--verde-escuro)}
+  .btn-ghost:hover{background:var(--verde);color:#fff}
+  .dishtag{display:inline-block;background:rgba(30,24,18,.72);border:1px solid var(--amarelo);color:#fff;font-style:italic;font-size:.85rem;padding:.3rem .8rem;border-radius:999px}
+  .dishtag::before{content:"✦ ";color:var(--amarelo);font-style:normal}
+  .pendente{display:inline-block;background:#FFF3CC;border:1.5px dashed var(--madeira);color:#7A5B2E;font-weight:800;font-size:.8rem;padding:.2rem .7rem;border-radius:8px}
+  .desde{font-family:'Lobster Two',cursive;color:var(--madeira);font-size:1.35rem;margin-top:.4rem}
+  .desde b{font-size:2.6rem;color:var(--vermelho);line-height:1}
+  .tamanhos{margin-top:1.7rem;background:#fff;border:2px solid var(--madeira);border-radius:var(--raio);padding:1.2rem 1.4rem}
+  .tamanhos h3{font-family:'Lobster Two',cursive;color:var(--verde-escuro);font-size:1.5rem;margin-bottom:.7rem}
+  .tamanhos .grid-tam{display:grid;grid-template-columns:repeat(auto-fit,minmax(138px,1fr));gap:.7rem}
+  .tamanhos .tcard{border:1.5px solid var(--madeira);border-radius:12px;padding:.95rem .6rem;text-align:center;display:grid;gap:.3rem;background:var(--massa)}
+  .tamanhos .tcard .pz{width:84px;height:84px;margin:0 auto .15rem;display:block}
+  .tamanhos .tcard .nome{font-family:'Lobster Two',cursive;font-size:1.55rem;color:var(--verde-escuro);line-height:1.05}
+  .tamanhos .tcard .cm{font-size:.85rem;color:var(--cinza);font-weight:800}
+  .tamanhos .tcard .fatias{font-size:.9rem;color:var(--cinza)}
+  .tamanhos .tcard .sab{font-weight:800;color:var(--vermelho);font-size:.98rem}
+  .tamanhos .tcard .obs{font-size:.78rem;color:var(--madeira);font-weight:800}
+  .tamanhos .bordas{margin-top:.9rem;padding-top:.9rem;border-top:1.5px dashed var(--madeira);font-size:.95rem;color:var(--cinza)}
+  .tamanhos .extra{margin-top:.8rem;padding-top:.8rem;border-top:1.5px dashed var(--madeira);color:var(--cinza);font-size:.95rem}
+  .promo-extra{background:rgba(255,255,255,.13);border:1.5px dashed var(--amarelo);border-radius:14px;padding:1.4rem 1.6rem;max-width:820px;margin:2.2rem auto 0;text-align:left}
+  .promo-extra h3{font-family:'Lobster Two',cursive;color:var(--amarelo);font-size:1.8rem;margin-bottom:.4rem}
+  .promo-extra p{font-size:1.02rem}
+  .promo-extra .mini{font-size:.88rem;opacity:.85;margin-top:.5rem}
+
+  /* header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border-bottom:3px solid var(--verde)}
+  .nav{display:flex;align-items:center;gap:1.2rem;padding:.55rem 20px;max-width:var(--max);margin:0 auto}
+  .nav .avatar{height:52px;width:52px;border-radius:50%}
+  .nav .logo-link{display:flex;align-items:center;gap:.6rem;text-decoration:none}
+  .nav .marca-nome{font-family:'Lobster Two',cursive;font-size:1.5rem;color:var(--verde-escuro)}
+  .icone-rede{display:inline-flex;align-items:center;color:var(--verde-escuro)}
+  .icone-rede:hover{color:var(--vermelho)}
+  .icone-rede svg{width:26px;height:26px}
+  footer .icone-rede{color:var(--amarelo)}
+  footer .icone-rede svg{width:38px;height:38px}
+  .nav nav{margin-left:auto;display:flex;gap:1.2rem;align-items:center}
+  .nav nav a{font-weight:800;text-decoration:none;color:var(--tinta);font-size:.95rem}
+  .nav nav a:hover{color:var(--verde-escuro)}
+  .nav .btn{padding:.6rem 1.2rem}
+  @media(max-width:760px){.nav nav a:not(.btn):not(.icone-rede){display:none}.nav .avatar{height:44px;width:44px}.nav .marca-nome{font-size:1.25rem}}
+
+  /* hero */
+  .hero{background:linear-gradient(180deg,var(--branco) 0%,var(--massa) 100%)}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding-top:3.2rem;padding-bottom:3.2rem}
+  .hero h1{font-size:clamp(2.4rem,5.2vw,4rem);margin:.7rem 0 1rem;color:var(--tinta)}
+  .hero h1 em{font-style:normal;color:var(--vermelho)}
+  .hero p.sub{font-size:1.15rem;color:var(--cinza);max-width:34rem}
+  .hero .ctas{display:flex;gap:.9rem;flex-wrap:wrap;margin:1.6rem 0 .7rem}
+  .hero .micro{font-size:.88rem;color:var(--cinza)}
+  .hero figure{position:relative;border-radius:var(--raio);overflow:hidden;box-shadow:0 18px 40px rgba(42,36,29,.22);max-height:560px}
+  .hero figure img{object-fit:cover;width:100%;height:100%;max-height:560px}
+  .hero figure .dishtag{position:absolute;left:14px;bottom:14px}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr}.hero figure{max-height:420px;order:-1}.hero figure img{max-height:420px}}
+
+  /* massas (assinatura) */
+  .massas{padding:3.5rem 0;background:var(--branco)}
+  .massas .painel{display:grid;grid-template-columns:1fr 1fr;position:relative;border:2.5px solid var(--madeira);border-radius:var(--raio);overflow:hidden;margin-top:1.6rem}
+  .massas .metade{padding:2.2rem 2rem}
+  .massas .metade+.metade{border-left:2.5px dashed var(--madeira)}
+  .massas .metade:first-child{background:var(--massa)}
+  .massas h3{font-family:'Lobster Two',cursive;font-size:1.9rem;color:var(--verde-escuro);margin-bottom:.5rem}
+  .massas .selo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--amarelo);color:var(--tinta);font-weight:800;font-size:.85rem;border-radius:999px;padding:.45rem .8rem;box-shadow:0 4px 12px rgba(42,36,29,.25)}
+  @media(max-width:760px){.massas .painel{grid-template-columns:1fr}.massas .metade+.metade{border-left:0;border-top:2.5px dashed var(--madeira)}}
+
+  /* cardapio */
+  .cardapio{padding:3.5rem 0;background:var(--massa)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.3rem;margin-top:1.8rem}
+  .card{background:#fff;border-radius:var(--raio);overflow:hidden;box-shadow:0 6px 16px rgba(42,36,29,.10);text-decoration:none;color:var(--tinta);transition:transform .18s ease,box-shadow .18s ease;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-5px);box-shadow:0 14px 28px rgba(42,36,29,.16)}
+  .card figure{position:relative;aspect-ratio:3/2;overflow:hidden}
+  .card figure img{width:100%;height:100%;object-fit:cover}
+  .card .dishtag{position:absolute;left:10px;bottom:10px;font-size:.78rem}
+  .card .info{padding:1rem 1.1rem 1.2rem}
+  .card h3{font-family:'Lobster Two',cursive;font-size:1.45rem;color:var(--verde-escuro)}
+  .card .ver{font-weight:800;font-size:.9rem;color:var(--vermelho)}
+  .card .flat{aspect-ratio:3/2;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#F3EBDC 0 14px,#EFE5D2 14px 28px)}
+  .cardapio .rodape-grid{margin-top:1.4rem;color:var(--cinza);font-size:.95rem}
+
+  /* delivery */
+  .delivery{padding:3.5rem 0}
+  .delivery .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:2.5rem;align-items:center}
+  .delivery img{border-radius:var(--raio);box-shadow:0 12px 30px rgba(42,36,29,.18)}
+  .delivery h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin:.6rem 0 .8rem}
+  @media(max-width:820px){.delivery .wrap{grid-template-columns:1fr}}
+
+  /* rodizio */
+  .rodizio{background:var(--verde);color:#fff;padding:3.5rem 0}
+  .rodizio .eyebrow{color:var(--amarelo)}
+  .rodizio .wrap{text-align:center}
+  .rodizio h2{font-size:clamp(2.6rem,6vw,4rem);margin:.2rem 0 1.1rem;color:#fff;text-shadow:0 3px 14px rgba(0,0,0,.25)}
+  .rodizio .preco-tag{display:inline-block;background:var(--amarelo);color:var(--tinta);font-weight:800;font-size:clamp(1.35rem,3vw,1.8rem);padding:.6rem 1.3rem;border-radius:14px;box-shadow:0 8px 20px rgba(0,0,0,.28);transform:rotate(-1.5deg)}
+  .rodizio .quando{font-size:1.15rem;font-weight:800;margin-top:.8rem}
+  .rodizio ul{list-style:none;margin:1.3rem auto 1.6rem;max-width:820px;text-align:left;font-size:1.05rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:.55rem 1.5rem}
+  .rodizio li{padding-left:1.4rem;position:relative}
+  .rodizio li::before{content:"✦";position:absolute;left:0;color:var(--amarelo)}
+  .rodizio li.full{grid-column:1/-1}
+  .mapa-link{display:inline-block;margin-top:.7rem;font-weight:800}
+  .rodizio .selo-data{font-size:.8rem;opacity:.75;margin-top:1rem}
+  .rodizio .btn-ghost{border-color:#fff;color:#fff}
+  .rodizio .btn-ghost:hover{background:#fff;color:var(--verde-escuro)}
+
+  /* sobre */
+  .sobre{padding:3.5rem 0;background:var(--branco)}
+  .sobre .texto{max-width:46rem;font-size:1.1rem}
+  .sobre .texto p+p{margin-top:1rem}
+
+  /* onde */
+  .onde{padding:3.5rem 0;background:var(--massa)}
+  .onde .wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start}
+  .onde iframe{width:100%;height:340px;border:0;border-radius:var(--raio);box-shadow:0 8px 20px rgba(42,36,29,.14)}
+  .onde dl{margin-top:1.2rem;display:grid;gap:.9rem}
+  .onde dt{font-weight:800;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--verde-escuro)}
+  @media(max-width:820px){.onde .wrap{grid-template-columns:1fr}}
+
+  footer{background:var(--tinta);color:#EAE2D6;padding:2.5rem 0 5.5rem}
+  footer .wrap{display:flex;gap:2rem;align-items:center;flex-wrap:wrap}
+  footer img{height:74px;width:auto;background:#fff;border-radius:12px;padding:6px}
+  footer a{color:var(--amarelo);font-weight:700;text-decoration:none}
+  footer .fim{margin-left:auto;font-size:.85rem;opacity:.75}
+
+  /* CTA fixo mobile */
+  .cta-fixo{position:fixed;left:0;right:0;bottom:0;z-index:60;display:none;padding:.7rem 16px;background:rgba(255,255,255,.96);border-top:2px solid var(--verde);box-shadow:0 -6px 18px rgba(42,36,29,.12)}
+  .cta-fixo .btn{display:block;text-align:center}
+  @media(max-width:760px){.cta-fixo{display:block}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.on{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn,.card{transition:none}}
+  h2.display{color:var(--tinta)}
 </style>
-<script>location.replace("https://app.cardapioweb.com/pizzariasabor_ditalia");</script>
 </head>
 <body>
-<main>
-  <h1>Pizzaria Sabor D'Italia</h1>
-  <p>Te levando pro nosso card&aacute;pio&hellip;</p>
-  <p><a href="https://app.cardapioweb.com/pizzariasabor_ditalia">Toca aqui se n&atilde;o abrir sozinho</a></p>
-</main>
+
+<header>
+  <div class="nav">
+    <a class="logo-link" href="#topo" aria-label="Pizzaria Sabor D'Italia — início">
+      <img class="avatar" src="img/avatar.png" alt="">
+      <span class="marca-nome">Sabor D'Italia</span>
+    </a>
+    <nav>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#rodizio">Rodízio</a>
+      <a href="#sobre">A casa</a>
+      <a href="#onde">Onde estamos</a>
+      <a class="icone-rede" href="https://www.instagram.com/pizzariasaborditalia/" aria-label="Instagram da Sabor D'Italia">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="btn btn-pedir" href="https://pedidos.pizzariasabordeitalia.com.br">Pedir agora</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="topo">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Pizzaria em Guarapuava</span>
+      <p class="desde">desde <b>2015</b></p>
+      <h1 class="display">Mais de <em>70 sabores</em>.<br>Duas massas.<br>Um forno só.</h1>
+      <p class="sub">Pizza artesanal de verdade — estamos localizados na Rua Azevedo Portugal, 1599 — Centro, para retirada e consumo no local.</p>
+      <div class="ctas">
+        <a class="btn btn-pedir" href="https://pedidos.pizzariasabordeitalia.com.br">Pedir agora</a>
+        <a class="btn btn-ghost" href="https://wa.me/5542991580707">Reservar mesa</a>
+      </div>
+      <p class="micro">Pedido direto com a pizzaria, pelo nosso cardápio online.</p>
+    </div>
+    <figure>
+      <img src="img/hero-cinco-queijos.jpg" alt="Fatia de pizza Cinco Queijos sendo levantada, com queijo derretido esticando" fetchpriority="high">
+      <span class="dishtag">Cinco Queijos</span>
+    </figure>
+  </div>
+</section>
+
+<section class="massas">
+  <div class="wrap reveal">
+    <span class="eyebrow">A nossa assinatura</span>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,2.9rem);margin-top:.6rem">Uma casa, duas massas</h2>
+    <div class="painel">
+      <div class="metade">
+        <h3>Massa Italiana</h3>
+        <p>Farinha <strong>tipo 00 italiana</strong> — a moagem finíssima da pizza napoletana — e <strong>fermentação longa</strong>, que trabalha a massa devagar: borda aerada, crocante por fora, macia por dentro, e uma pizza <strong>mais leve de digerir</strong>. Preparo artesanal do começo ao fim. <strong>Disponível nos tamanhos Grande e Master.</strong></p>
+      </div>
+      <div class="metade">
+        <h3>Massa Tradicional</h3>
+        <p>A clássica <strong>brasileira de pizzaria</strong>, feita com farinha nacional e <strong>sempre fresca</strong> — o jeito que todo mundo cresceu comendo.</p>
+      </div>
+      <span class="selo">OU</span>
+    </div>
+  </div>
+</section>
+
+<section class="cardapio" id="cardapio">
+  <div class="wrap reveal">
+    <span class="eyebrow">O cardápio</span>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,2.9rem);margin-top:.6rem">Escolha por onde começar</h2>
+    <div class="grid">
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-marguerita.jpg" alt="Pizza Marguerita" loading="lazy"><span class="dishtag">Marguerita</span></figure>
+        <div class="info"><h3>Tradicionais</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-frango-catupiry.jpg" alt="Pizza de frango com catupiry" loading="lazy"><span class="dishtag">Frango Catupiry</span></figure>
+        <div class="info"><h3>Especiais</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-calabresa-especial.jpg" alt="Pizza Calabresa Especial" loading="lazy"><span class="dishtag">Calabresa Especial</span></figure>
+        <div class="info"><h3>Premium</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-mignon-mostarda-mel.jpg" alt="Pizza de mignon ao molho de mostarda e mel" loading="lazy"><span class="dishtag">Mignon Mostarda e Mel</span></figure>
+        <div class="info"><h3>Nobres</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-morangotella.jpg" alt="Pizza doce Morangotella completa" loading="lazy"><span class="dishtag">Morangotella</span></figure>
+        <div class="info"><h3>Doces</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-calzone.jpg" alt="Calzone da casa" loading="lazy"><span class="dishtag">Calzone</span></figure>
+        <div class="info"><h3>Calzones</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-lasanha.jpg" alt="Lasanha à bolonhesa da casa" loading="lazy"><span class="dishtag">Lasanha Bolonhesa</span></figure>
+        <div class="info"><h3>Lasanhas</h3><span class="ver">ver no cardápio →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-stick.jpg" alt="Stick de carne seca com cream cheese, aberto na tábua" loading="lazy"><span class="dishtag">Stick Carne Seca com Cream Cheese</span></figure>
+        <div class="info"><h3>Sticks</h3><span class="ver">ver sabores →</span></div>
+      </a>
+      <a class="card" href="https://pedidos.pizzariasabordeitalia.com.br">
+        <figure><img src="img/card-batata-calabresa.jpg" alt="Batata recheada com calabresa, aberta" loading="lazy"><span class="dishtag">Batata Calabresa</span></figure>
+        <div class="info"><h3>Batatas</h3><span class="ver">ver opções →</span></div>
+      </a>
+    </div>
+    <div class="tamanhos">
+      <h3>Tamanhos</h3>
+      <div class="grid-tam">
+        <div class="tcard">
+          <svg class="pz" viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="40" fill="#F5CE83" stroke="#C98A3B" stroke-width="4"/><circle cx="45" cy="45" r="32" fill="#FBE7B8"/><text x="45" y="52" text-anchor="middle" font-family="Nunito,sans-serif" font-size="19" font-weight="800" fill="#7A4B1F">1</text></svg>
+          <span class="nome">Broto</span><span class="cm">20cm</span><span class="fatias">2 fatias</span><span class="sab">1 sabor</span><span class="obs">Apenas doces</span>
+        </div>
+        <div class="tcard">
+          <svg class="pz" viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="40" fill="#F5CE83" stroke="#C98A3B" stroke-width="4"/><circle cx="45" cy="45" r="32" fill="#FBE7B8"/><line x1="45" y1="5" x2="45" y2="85" stroke="#C98A3B" stroke-width="2.5"/><text x="27" y="51" text-anchor="middle" font-family="Nunito,sans-serif" font-size="17" font-weight="800" fill="#7A4B1F">1</text><text x="63" y="51" text-anchor="middle" font-family="Nunito,sans-serif" font-size="17" font-weight="800" fill="#7A4B1F">2</text></svg>
+          <span class="nome">Pequena</span><span class="cm">25cm</span><span class="fatias">4 fatias</span><span class="sab">2 sabores</span>
+        </div>
+        <div class="tcard">
+          <svg class="pz" viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="40" fill="#F5CE83" stroke="#C98A3B" stroke-width="4"/><circle cx="45" cy="45" r="32" fill="#FBE7B8"/><line x1="45" y1="45" x2="45" y2="5" stroke="#C98A3B" stroke-width="2.5"/><line x1="45" y1="45" x2="10.4" y2="65" stroke="#C98A3B" stroke-width="2.5"/><line x1="45" y1="45" x2="79.6" y2="65" stroke="#C98A3B" stroke-width="2.5"/><text x="26" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">1</text><text x="64" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">2</text><text x="45" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">3</text></svg>
+          <span class="nome">Grande</span><span class="cm">35cm</span><span class="fatias">8 ou 9 fatias</span><span class="sab">até 3 sabores</span><span class="obs">3 sabores = 9 fatias</span>
+        </div>
+        <div class="tcard">
+          <svg class="pz" viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="40" fill="#F5CE83" stroke="#C98A3B" stroke-width="4"/><circle cx="45" cy="45" r="32" fill="#FBE7B8"/><line x1="45" y1="45" x2="45" y2="5" stroke="#C98A3B" stroke-width="2.5"/><line x1="45" y1="45" x2="10.4" y2="65" stroke="#C98A3B" stroke-width="2.5"/><line x1="45" y1="45" x2="79.6" y2="65" stroke="#C98A3B" stroke-width="2.5"/><text x="26" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">1</text><text x="64" y="38" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">2</text><text x="45" y="74" text-anchor="middle" font-family="Nunito,sans-serif" font-size="16" font-weight="800" fill="#7A4B1F">3</text></svg>
+          <span class="nome">Master</span><span class="cm">40cm</span><span class="fatias">12 fatias</span><span class="sab">3 sabores</span>
+        </div>
+        <div class="tcard">
+          <svg class="pz" viewBox="0 0 90 90" aria-hidden="true"><circle cx="45" cy="45" r="40" fill="#F5CE83" stroke="#C98A3B" stroke-width="4"/><circle cx="45" cy="45" r="32" fill="#FBE7B8"/><line x1="45" y1="5" x2="45" y2="85" stroke="#C98A3B" stroke-width="2.5"/><line x1="5" y1="45" x2="85" y2="45" stroke="#C98A3B" stroke-width="2.5"/><text x="28" y="35" text-anchor="middle" font-family="Nunito,sans-serif" font-size="15" font-weight="800" fill="#7A4B1F">1</text><text x="62" y="35" text-anchor="middle" font-family="Nunito,sans-serif" font-size="15" font-weight="800" fill="#7A4B1F">2</text><text x="62" y="69" text-anchor="middle" font-family="Nunito,sans-serif" font-size="15" font-weight="800" fill="#7A4B1F">3</text><text x="28" y="69" text-anchor="middle" font-family="Nunito,sans-serif" font-size="15" font-weight="800" fill="#7A4B1F">4</text></svg>
+          <span class="nome">Família</span><span class="cm">45cm</span><span class="fatias">16 fatias</span><span class="sab">4 sabores</span>
+        </div>
+      </div>
+      <p class="bordas"><strong>Bordas:</strong> Cheddar · Calabresa · Catupiry · Cream Cheese · Mozarela · Provolone · Doce de leite · Nutella</p>
+      <p class="extra">Stick — tamanho único &nbsp;·&nbsp; Lasanha — aprox. 1&nbsp;kg &nbsp;·&nbsp; Batata — aprox. 450&nbsp;g</p>
+    </div>
+    <p class="rodape-grid">Preços, tamanhos e montagem: tudo direto no <a href="https://pedidos.pizzariasabordeitalia.com.br"><strong>cardápio online</strong></a> — sempre atualizado.</p>
+  </div>
+</section>
+
+<section class="delivery">
+  <div class="wrap reveal">
+    <img src="img/delivery-frango-catupiry.jpg" alt="Caixa de pizza aberta em casa, fatia de frango com catupiry sendo levantada" loading="lazy">
+    <div>
+      <span class="eyebrow">Delivery</span>
+      <h2 class="display">Da boca do forno pra sua porta</h2>
+      <p>Pede pelo nosso cardápio online e a cozinha já começa: pizza montada na hora, assada no forno da casa e despachada quentinha. <strong>Canal direto com a pizzaria</strong>, com promoções e cupons exclusivos que só existem aqui.</p>
+      <div class="ctas" style="margin-top:1.3rem"><a class="btn btn-pedir" href="https://pedidos.pizzariasabordeitalia.com.br">Fazer meu pedido</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="rodizio" id="rodizio">
+  <div class="wrap reveal">
+    <h2 class="display">Rodízio de quarta a sábado</h2>
+    <p><span class="preco-tag">R$ 69,90 por pessoa</span></p>
+    <p class="quando">das 19h às 22h30</p>
+    <ul>
+      <li>Das salgadas às doces, à vontade</li>
+      <li>Calzone, lasanha e stick</li>
+      <li>Batata frita e polenta frita</li>
+      <li>Panqueca doce e sorvete</li>
+      <li class="full"><strong>Na quarta:</strong> quem está no rodízio bebe <strong>chopp e caipirinha em dobro</strong></li>
+    </ul>
+    <a class="btn btn-ghost" href="https://wa.me/5542991580707">Reservar pelo WhatsApp</a>
+    <div class="promo-extra">
+      <h3>🎂 Quinta do aniversariante</h3>
+      <p>Fez aniversário no mês? <strong>Junta 4 amigos no rodízio e o teu sai de graça</strong> — toda quinta.</p>
+      <p class="mini">Vale pro aniversariante do mês (documento com foto) · a cada 4 rodízios inteiros pagos na mesa, um aniversariante não paga · bebidas à parte.</p>
+    </div>
+    <p class="selo-data">Valores e promoções vigentes em setembro de 2026.</p>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap reveal">
+    <span class="eyebrow">A casa</span>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,2.9rem);margin:.6rem 0 1rem">Desde 2015 atrás do mesmo balcão</h2>
+    <div class="texto">
+      <p>Nosso objetivo é simples: fazer a melhor pizza que você já experimentou. Cada matéria-prima é escolhida a dedo — só produto de alta qualidade — e a massa vem em duas escolas: a <strong>italiana</strong>, de farinha 00 com fermentação longa, e a <strong>tradicional brasileira</strong>, fresca, do jeito clássico de pizzaria.</p>
+      <p>No salão, um espaço aconchegante, com som ambiente e iluminação pensada pra dividir bons momentos com amigos e família. E se a noite pede sofá: a gente entrega.</p>
+    </div>
+  </div>
+</section>
+
+<section class="onde" id="onde">
+  <div class="wrap reveal">
+    <div>
+      <span class="eyebrow">Onde estamos</span>
+      <h2 class="display" style="font-size:clamp(2rem,4vw,2.9rem);margin-top:.6rem">Venha conhecer nosso espaço ou peça em casa</h2>
+      <dl>
+        <div><dt>Endereço</dt><dd>Rua Azevedo Portugal, 1599 — Guarapuava-PR · CEP 85010-200</dd></div>
+        <div><dt>Horário</dt><dd>Todos os dias, das 18h às 23h30 <em>(segunda até 23h)</em></dd></div>
+        <div><dt>Telefone</dt><dd><a href="tel:+554236230707">(42) 3623-0707</a> &nbsp;/&nbsp; <a href="tel:+554230360707">(42) 3036-0707</a></dd></div>
+        <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5542991580707">(42) 99158-0707</a></dd></div>
+      </dl>
+    </div>
+    <div>
+      <iframe title="Mapa — Pizzaria Sabor D'Italia" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Pizzaria+Sabor+D'Italia,+Rua+Azevedo+Portugal+1599,+Guarapuava+PR&output=embed"></iframe>
+      <a class="mapa-link" href="https://www.google.com/maps/search/?api=1&query=Pizzaria+Sabor+D'Italia+Rua+Azevedo+Portugal+1599+Guarapuava+PR">Abrir no Google Maps →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img src="img/logo.png" alt="Pizzaria Sabor D'Italia">
+    <div>
+      <a href="https://pedidos.pizzariasabordeitalia.com.br">Cardápio e pedidos</a>
+      <div style="display:flex;gap:1.1rem;margin-top:.8rem">
+        <a class="icone-rede" href="https://www.instagram.com/pizzariasaborditalia/" aria-label="Instagram da Sabor D'Italia">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.6" cy="6.4" r="1.3" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a class="icone-rede" href="https://www.facebook.com/pizzaSaborDitalia" aria-label="Facebook da Sabor D'Italia">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.6l.4-3h-3V9.1c0-.9.3-1.5 1.6-1.5H16.6V4.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9V11H7.9v3h2.6v7h3Z"/></svg>
+        </a>
+      </div>
+    </div>
+    <span class="fim">© 2026 Pizzaria Sabor D'Italia — Guarapuava-PR</span>
+  </div>
+</footer>
+
+<div class="cta-fixo"><a class="btn btn-pedir" href="https://pedidos.pizzariasabordeitalia.com.br">Pedir agora 🍕</a></div>
+
+<script>
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'))}
+</script>
 </body>
 </html>
