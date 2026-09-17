@@ -163,6 +163,18 @@
   .sobre{padding:3.5rem 0;background:var(--branco)}
   .sobre .texto{max-width:46rem;font-size:1.1rem}
   .sobre .texto p+p{margin-top:1rem}
+  .premio{display:flex;align-items:center;gap:1.6rem;flex-wrap:wrap;margin-top:2rem;max-width:46rem;background:var(--massa);border:2px solid var(--madeira);border-radius:var(--raio);padding:1.3rem 1.5rem;text-decoration:none;color:var(--tinta);transition:transform .18s ease,box-shadow .18s ease}
+  .premio:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(42,36,29,.14)}
+  .premio:focus-visible{outline:3px solid var(--amarelo);outline-offset:3px}
+  .premio img{width:220px;height:auto;flex:0 0 auto}
+  .premio > div{flex:1 1 240px}
+  .premio .anos{font-family:'Lobster Two',cursive;font-size:1.6rem;color:var(--verde-escuro);line-height:1.15;text-wrap:balance}
+  .premio p{font-size:.98rem;color:var(--cinza);margin-top:.3rem}
+  .premio .ver{display:inline-block;margin-top:.5rem;font-weight:800;font-size:.9rem;color:var(--vermelho)}
+  .hero .prova{display:flex;align-items:center;gap:.55rem;margin-top:.9rem;font-size:.88rem;color:var(--cinza);text-decoration:none}
+  .hero .prova img{width:30px;height:auto}
+  .hero .prova strong{color:var(--tinta);display:block;line-height:1.3}
+  .hero .prova span{line-height:1.3}
 
   /* onde */
   .onde{padding:3.5rem 0;background:var(--massa)}
@@ -223,6 +235,7 @@
         <a class="btn btn-ghost" href="https://wa.me/5542991580707">Reservar mesa</a>
       </div>
       <p class="micro">Pedido direto com a pizzaria, pelo nosso cardápio online.</p>
+      <a class="prova" href="#sobre"><img src="img/tripadvisor-selo-2026.png" alt="" width="30" height="38"><span><strong>Travelers' Choice do Tripadvisor</strong>premiados em 2023, 2024 e 2026</span></a>
     </div>
     <a class="foto-link" href="https://pedidos.pizzariasabordeitalia.com.br" aria-label="Abrir o cardápio online e pedir">
       <figure>
@@ -366,6 +379,14 @@
       <p>Nosso objetivo é simples: fazer a melhor pizza que você já experimentou. Cada matéria-prima é escolhida a dedo — só produto de alta qualidade — e a massa vem em duas escolas: a <strong>italiana</strong>, de farinha 00 com fermentação longa, e a <strong>tradicional brasileira</strong>, fresca, do jeito clássico de pizzaria.</p>
       <p>No salão, um espaço aconchegante, com som ambiente e iluminação pensada pra dividir bons momentos com amigos e família. E se a noite pede sofá: a gente entrega.</p>
     </div>
+    <a class="premio" href="https://www.tripadvisor.com.br/Restaurant_Review-g1062510-d9858007-Reviews-Sabor_D_Italia_Pizzaria-Guarapuava_State_of_Parana.html" target="_blank" rel="noopener">
+      <img src="img/tripadvisor-travelers-choice-2026.png" alt="Selo Tripadvisor Travelers' Choice 2026" width="220" height="86" loading="lazy">
+      <div>
+        <p class="anos">Premiados em 2023, 2024 e 2026</p>
+        <p>O Travelers' Choice é o prêmio do Tripadvisor pros restaurantes mais bem avaliados pelos próprios clientes.</p>
+        <span class="ver">ver as avaliações no Tripadvisor →</span>
+      </div>
+    </a>
   </div>
 </section>
 
