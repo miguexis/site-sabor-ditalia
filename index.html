@@ -3,6 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Tag do Google: GA4 do cardapio (mesma propriedade do pedidos.) + Google Ads. Linker pra a visita seguir pro cardapio. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XJCZ16Y9TG"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js',new Date());
+  gtag('set','linker',{domains:['pizzariasabordeitalia.com.br','pedidos.pizzariasabordeitalia.com.br']});
+  gtag('config','G-XJCZ16Y9TG');
+  gtag('config','AW-11118369407');
+</script>
 <title>Pizzaria Sabor D'Italia — Guarapuava | Mais de 70 sabores, duas massas</title>
 <meta name="description" content="Pizzaria em Guarapuava desde 2015: mais de 70 sabores, duas massas (italiana 00 de fermentação longa e tradicional fresca), rodízio de quarta a sábado e delivery pelo cardápio próprio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -434,6 +444,18 @@
     const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}}),{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   }else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('on'))}
+  // Mede o clique no WhatsApp (reserva) e no cardapio. Nao segura o link: o evento sai com beacon.
+  document.addEventListener('click',function(ev){
+    var a=ev.target.closest&&ev.target.closest('a[href]');
+    if(!a||typeof gtag!=='function')return;
+    var sec=a.closest('section[id]');
+    var onde=sec?sec.id:(a.closest('header')?'topo':(a.closest('.cta-fixo')?'botao-fixo':'rodape'));
+    if(a.href.indexOf('wa.me/')>-1){
+      gtag('event','clique_whatsapp',{local:onde,texto:a.textContent.trim().slice(0,40),transport_type:'beacon'});
+    }else if(a.href.indexOf('pedidos.pizzariasabordeitalia.com.br')>-1){
+      gtag('event','clique_cardapio',{local:onde,transport_type:'beacon'});
+    }
+  });
 </script>
 </body>
 </html>
