@@ -106,6 +106,14 @@
   .nav .btn{padding:.6rem 1.2rem}
   @media(max-width:760px){.nav nav a:not(.btn):not(.icone-rede){display:none}.nav .avatar{height:44px;width:44px}.nav .marca-nome{font-size:1.25rem}}
 
+  /* faixa da Black Week (25 a 27/11/2026) — sai do HTML no sab 28/11; o script do bloco a esconde sozinho a partir de 28/11 00h */
+  .faixa-black{background:#0a0705;padding:14px 0 12px}
+  .faixa-black img{width:100%;height:auto;border-radius:12px}
+  .faixa-black p{color:#fff;text-align:center;font-weight:800;font-size:1rem;margin-top:.55rem;line-height:1.35}
+  .faixa-black p strong{color:var(--amarelo)}
+  .faixa-black p a{color:var(--amarelo)}
+  @media(max-width:760px){.faixa-black .wrap{padding:0 8px}.faixa-black img{border-radius:8px}.faixa-black p{font-size:.92rem}}
+
   /* hero */
   .hero{background:linear-gradient(180deg,var(--branco) 0%,var(--massa) 100%)}
   .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;padding-top:3.2rem;padding-bottom:3.2rem}
@@ -232,6 +240,16 @@
     </nav>
   </div>
 </header>
+
+<section class="faixa-black" id="black-week" data-ate="2026-11-28T00:00:00-03:00">
+  <div class="wrap">
+    <a href="https://pedidos.pizzariasabordeitalia.com.br" aria-label="Black Week: abrir o cardápio online e pedir">
+      <img src="img/black-week-2026-11.jpg" width="1270" height="460" fetchpriority="high" alt="Black Week Sabor D'Italia: 3 pizzas grandes, 2 sabores cada, R$ 55 cada, de 25 a 27/11, só até sexta">
+    </a>
+    <p>3 pizzas grandes de 2 sabores, <strong>R$ 55 cada</strong> · de 25 a 27/11, só até sexta · <a href="https://pedidos.pizzariasabordeitalia.com.br">peça no cardápio online</a></p>
+  </div>
+</section>
+<script>(function(){var b=document.getElementById('black-week');if(b&&Date.now()>=Date.parse(b.getAttribute('data-ate')))b.parentNode.removeChild(b);})();</script>
 
 <section class="hero" id="topo">
   <div class="wrap">
